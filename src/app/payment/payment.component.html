@@ -1,0 +1,63 @@
+<app-header></app-header>
+<br/>
+<br/>
+<br />
+<br />
+<br />
+
+<body>
+
+
+
+  <h1 class="text-center">Pay your Food Bill here</h1>
+
+  <hr>
+  <google-pay-button class="ml-10"
+                     environment="TEST"
+                     buttonType="buy"
+                     buttonColor="black"
+                     [paymentRequest]="{
+  apiVersion: 2,
+  apiVersionMinor: 0,
+  allowedPaymentMethods: [
+    {
+      type: 'CARD',
+      parameters: {
+        allowedAuthMethods: ['PAN_ONLY', 'CRYPTOGRAM_3DS'],
+        allowedCardNetworks: ['AMEX', 'VISA', 'MASTERCARD']
+      },
+      tokenizationSpecification: {
+        type: 'PAYMENT_GATEWAY',
+        parameters: {
+          gateway: 'example',
+          gatewayMerchantId: 'FoodishMerchantId'
+        }
+      }
+    }
+  ],
+  merchantInfo: {
+    merchantId: '12345678901234567890',
+    merchantName: 'Foodish'
+  },
+  transactionInfo: {
+    totalPriceStatus: 'FINAL',
+    totalPriceLabel: 'Total',
+    totalPrice: '100.00',
+    currencyCode: 'USD',
+    countryCode: 'US'
+  }
+}"
+                     (loadpaymentdata)="onLoadPaymentData($event)"></google-pay-button>
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+
+  <button type="button" class="btn btn-success btn-lg" button (click)="btnOrder()">Pay</button>
+
+  <router-outlet></router-outlet>
+  <!--<img src="./assets/images/foods/payment.jpg">-->
+  <style>
+    body {
+      background-image: url("./assets/images/foods/payment.jpg")
+    }
+  </style>
+
+</body>

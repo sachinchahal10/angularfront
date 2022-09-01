@@ -1,0 +1,190 @@
+<app-header></app-header>
+<br />
+<br />
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">
+  Add Food Dish
+</button>
+
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+
+<button type="button" class="btn btn-primary" routerLink="orderhistory">
+  Active Orders
+</button>
+<br />
+<br />
+<!--table class="table table-hover">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>ItemName</th>
+      <th>ItemPrice</th>
+      <th>FoodType</th>
+      <th>Image</th>
+      <th>Description</th>
+      <th>Rating</th>
+      <th style="width:50px">&nbsp; </th>
+      <th style="width:50px">&nbsp; </th>
+    </tr>
+  </thead>
+  <tbody>
+    <h1 *ngIf="allData.length === 0">No Data Available</h1>
+    <tr *ngFor="let food of allData">
+      <td>{{ food.id}}</td>
+      <td>{{ food.itemname}}</td>
+      <td>{{ food.itemprice}}</td>
+      <td>{{ food.foodtype}}</td>
+      <td>{{ food.image}}</td>
+      <td>{{ food.description}}</td>
+      <td>{{ food.rating}}</td>
+      <td>
+        <input type="button" class="form-control" id="btnDel" value="Delete"
+               ngClass="btn btn-danger btn-sm"
+               (click)="deleteData(food)" />
+      </td>
+      <td>
+        <input type="button" class="form-control" id="btnEdit" value="Edit" ngClass="btn btn-primary btn-sm"
+               data-bs-toggle="modal" data-bs-target="#editModal" (click)="editData(food)" />
+      </td>
+    </tr>
+  </tbody>
+</table>-->
+
+
+
+
+
+
+
+<h2>Welcome Admin</h2>
+<div class=" container">
+  <div class="row">
+    <div class="card col-4 p-4" *ngFor="let food of allData">
+      <div class=" container">
+        <div class="card" style="width:300px">
+          <img class="card-img-top" [src]="food.image" height="200" width="100">
+          <div class="card-body">
+            <a [title]="food.itemname + ' description'">
+              {{ food.itemname }} - {{ food.itemprice | currency:'INR' }}
+            </a>
+            <p class="card-text">{{ food.description }}</p>
+
+            <!--<h3 class="card-text">Description:-</h3>-->
+            <p class="card-text">{{ food.foodtype }}</p>
+            <p class="card-text">{{ food.rating }}</p>
+          </div>
+        </div>
+      </div>
+      <input type="button" class="form-control" id="btnDel" value="Delete"
+             ngClass="btn btn-danger btn-sm"
+             (click)="deleteData(food)" />
+      <input type="button" class="form-control" id="btnEdit" value="Edit" ngClass="btn btn-primary btn-sm"
+             data-bs-toggle="modal" data-bs-target="#editModal" (click)="editData(food)" />
+
+      <!--<button (click)="addToCart(food)">Add To Cart</button>-->
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<!--Modal-->
+<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add New Item</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="formValue">
+          <div class="mb-3">
+            <label for="foodid" class="form-label">Food ID</label>
+            <input type="number" formControlName="id" class="form-control" id="foodid">
+          </div>
+          <div class="mb-3">
+            <label for="itemname" class="form-label">Item Name</label>
+            <input type="text" formControlName="itemname" class="form-control" id="itemname">
+          </div>
+          <div class="mb-3">
+            <label for="itemprice" class="form-label">Item Price</label>
+            <input type="text" formControlName="itemprice" class="form-control" id="itemprice">
+          </div>
+          <div class="mb-3">
+            <label for="foodtype" class="form-label">Food Type</label>
+            <input type="text" formControlName="foodtype" class="form-control" id="foodtype">
+          </div>
+          <div class="mb-3">
+            <label for="image" class="form-label">Image</label>
+            <input type="text" formControlName="image" class="form-control" id="image">
+          </div>
+          <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <input type="text" formControlName="description" class="form-control" id="description">
+          </div>
+          <div class="mb-3">
+            <label for="rating" class="form-label">Rating</label>
+            <input type="text" formControlName="rating" class="form-control" id="rating">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success" (click)="addFood()">Add Item</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Modal-->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Update Item</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="formValue">
+          <div class="mb-3">
+            <label for="foodid" class="form-label">Food ID</label>
+            <input type="number" formControlName="id" class="form-control" id="foodid">
+          </div>
+          <div class="mb-3">
+            <label for="itemname" class="form-label">Item Name</label>
+            <input type="text" formControlName="itemname" class="form-control" id="itemname">
+          </div>
+          <div class="mb-3">
+            <label for="itemprice" class="form-label">Item Price</label>
+            <input type="text" formControlName="itemname" class="form-control" id="itemname">
+          </div>
+          <div class="mb-3">
+            <label for="foodtype" class="form-label">Food Type</label>
+            <input type="text" formControlName="foodtype" class="form-control" id="foodtype">
+          </div>
+          <div class="mb-3">
+            <label for="image" class="form-label">Image</label>
+            <input type="text" formControlName="image" class="form-control" id="image">
+          </div>
+          <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <input type="text" formControlName="description" class="form-control" id="description">
+          </div>
+          <div class="mb-3">
+            <label for="rating" class="form-label">Rating</label>
+            <input type="text" formControlName="rating" class="form-control" id="rating">
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success" (click)="updateData()">Update Item</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+

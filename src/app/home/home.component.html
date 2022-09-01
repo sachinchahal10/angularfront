@@ -1,0 +1,108 @@
+<app-header></app-header>
+<app-search></app-search>
+<app-tags></app-tags>
+<app-not-found [visible]="!foods || foods.length <= 0" resetLinkText="Reset Search"></app-not-found>
+<ul>
+  <li *ngFor="let food of foods">
+    <a routerLink="/food/{{food.id}}">
+      <img src="{{food.imageUrl}}" alt="">
+      <div class="content">
+        <div class="name">
+          {{food.name}}
+        </div>
+        <span class="favorite {{food.favorite?'':'not'}}">
+          ❤
+        </span>
+        <div class="stars">
+          <star-rating [value]="food.stars"
+                       [totalstars]="5"
+                       checkedcolor="red"
+                       uncheckedcolor="black"
+                       size="20px"
+                       [readonly]="true">
+          </star-rating>
+        </div>
+        <div class="product-item-footer">
+          <div class="origins">
+            <span *ngFor="let origin of food.origins">
+              {{origin}}
+            </span>
+          </div>
+          <div class="cook-time">
+            <span>🕒</span>
+            {{food.cookTime}}
+          </div>
+        </div>
+        <div class="price">
+          <span>
+            {{food.price|currency : 'INR'}}
+          </span>
+        </div>
+      </div>
+    </a>
+  </li>
+</ul>
+<!--<div class=" container">
+  <div class="row">
+    <div class="card col-4 p-4" *ngFor="let food of allData">-->
+      <!--<a routerLink="/foodapi/{{food.id}}">-->
+        <!--<div class=" container">
+          <div class="card" style="width:300px">
+            <img class="card-img-top" [src]="food.image" height="200" width="100">
+            <div class="card-body">
+              <a [title]="food.itemname + ' description'">
+                {{ food.itemname }} - {{ food.itemprice | currency:'INR' }}
+              </a>
+              <p class="card-text">{{ food.description }}</p>-->
+
+              <!--<h3 class="card-text">Description:-</h3>-->
+              <!--<p class="card-text">{{ food.foodtype }}</p>-->
+              <!-- <div class="stars">
+                <p class="card-text">{{ food.rating }}</p>
+              </div>
+               -->
+              <!--<div class="rating">
+                <star-rating [value]="food.rating" [totalstars]="5" checkedcolor="red" uncheckedcolor="black" size="30px"
+                             [readonly]="true">
+                </star-rating>
+              </div>
+            </div>
+            <div>
+              <button (click)="addtocart11(food)">Add To Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>-->
+<!--</div>-->
+
+
+
+<ul>
+  <li *ngFor="let food of allData">
+    <a routerLink="/food/{{food.id}}">
+      <img src="{{food.image}}" alt="">
+      <div class="content">
+        <div class="name">
+          {{food.itemname}}
+        </div>
+        
+        <div class="rating">
+                  <star-rating [value]="food.rating" [totalstars]="5" checkedcolor="red" uncheckedcolor="black" size="30px"
+                               [readonly]="true">
+                  </star-rating>
+          </div>
+          
+          <div class="price">
+            <span>
+              {{food.itemprice|currency : 'INR'}}
+            </span>
+          </div>
+        </div>
+      </a>
+    </li>
+  </ul>
+
+
+
+
+

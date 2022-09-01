@@ -1,0 +1,63 @@
+<app-header></app-header>
+
+
+<!--<table>
+  <tr *ngFor="let x of cart">-->
+<!--<td>{{ x.name }}</td>
+<td>{{ x.price }}</td>-->
+<!--<div>
+          <div *ngIf="cart && cart.items.length >0" class="container">
+
+            <ul>
+              <li *ngFor="let c of cart.items">
+                <div>
+                  <a>
+                    {{c.food.name}}
+                  </a>
+                </div>
+                <div>
+                  {{c.price | currency: 'INR'}}
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </tr>
+</table>-->
+
+<br/>
+
+
+<button class="remove-button" class="btn btn-info" routerLink="api">Back</button>
+<div *ngIf="cart && cart.items.length >0" class="container">
+  <ul>
+    <li *ngFor="let cartItem of cart.items">
+      <div>
+        <a routerLink="/food/{{cartItem.food.id}}">
+          {{cartItem.food.name}}
+        </a>
+      </div>
+
+      
+      <div>
+        {{cartItem.price | currency: 'INR'}}
+      </div>
+
+      
+    </li>
+  </ul>
+
+
+
+  
+
+  </div>
+
+
+  <!--<div>-->
+  <!--<button class="Add" (click)="address()">
+      Proceed To Checkout
+    </button>
+  </div>-->
+
+

@@ -1,0 +1,65 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "signup": [
+    {
+      "name": "Ankit",
+      "mobile": "213456879",
+      "email": "ankit@gmail.com",
+      "password": "123456",
+      "id": 1
+    },
+    {
+      "name": "Ankit",
+      "mobile": "213456879",
+      "email": "ankit@gmail.com",
+      "password": "123456",
+      "id": 2
+    },
+    {
+      "name": "ankit",
+      "mobile": "7894561230",
+      "email": "ankit@gmail.com",
+      "password": "123456",
+      "id": 3
+    },
+    {
+      "name": "ankit",
+      "mobile": "7894561230",
+      "email": "ankit@gmail.com",
+      "password": "123456",
+      "id": 4
+    }
+  ],
+  "adminsignup": [
+    {
+      "name": "Ankit",
+      "email": "ankit@gmail.com",
+      "mobile": "9812036547",
+      "password": "1234",
+      "id": 1
+    },
+    {
+      "name": "Ankit",
+      "email": "ankit14@yahoo.com",
+      "mobile": "984563201",
+      "password": "12345",
+      "id": 2
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

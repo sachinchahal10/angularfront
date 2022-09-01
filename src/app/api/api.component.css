@@ -1,0 +1,9 @@
+li a:hover {
+  opacity: 0.9;
+  cursor: pointer;
+}
+
+img:hover {
+  opacity: 0.2;
+  cursor: pointer;
+}
